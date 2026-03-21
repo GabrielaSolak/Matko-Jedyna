@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MatkoJedyna_projekt: Main Page</title>
+  <style>
+    body { font-family: Arial, Helvetica, sans-serif; margin: 0; color: #222; background: #fff; }
+    #top { background: #2d4e6c; color: #fff; padding: 14px 20px; border-bottom: 4px solid #8fb3d1; }
+    #titlearea { max-width: 1180px; margin: 0 auto; }
+    #projectname { font-size: 28px; font-weight: bold; }
+    #projectbrief { font-size: 14px; margin-top: 4px; color: #dce9f5; }
+    .tabs { background: #e8eef3; border-bottom: 1px solid #b6c7d6; }
+    .tabs ul { list-style: none; margin: 0 auto; padding: 0; max-width: 1180px; display: flex; gap: 8px; }
+    .tabs li { padding: 10px 14px; font-size: 14px; color: #234; }
+    .contents { max-width: 1180px; margin: 24px auto; padding: 0 20px 50px; }
+    h1 { font-size: 30px; border-bottom: 1px solid #d6d6d6; padding-bottom: 8px; margin-bottom: 10px; }
+    h2 { font-size: 22px; margin-top: 34px; border-bottom: 1px solid #ddd; padding-bottom: 6px; color: #24445f; }
+    h3 { font-size: 18px; margin-top: 28px; color: #24445f; }
+    .summary { background: #f7f9fb; border: 1px solid #d5dde5; padding: 12px 16px; border-radius: 4px; }
+    .summary ul { margin: 8px 0 0 18px; }
+    .memberdecls, .doxtable, .paramtable { border-collapse: collapse; width: 100%; margin-top: 8px; }
+    .memberdecls th, .memberdecls td, .doxtable th, .doxtable td, .paramtable th, .paramtable td { border: 1px solid #d7dfe7; padding: 8px 10px; text-align: left; vertical-align: top; }
+    .memberdecls th, .doxtable th, .paramtable th { background: #f4f7fa; }
+    .memitem { border: 1px solid #d6dfe8; border-radius: 4px; margin: 16px 0; overflow: hidden; }
+    .memproto { background: #eef3f7; padding: 10px 14px; font-family: Consolas, monospace; font-size: 14px; }
+    .memdoc { padding: 12px 14px; background: #fff; }
+    .fragment { background: #f8f8f8; border: 1px solid #ddd; padding: 12px; overflow-x: auto; font-family: Consolas, monospace; font-size: 13px; line-height: 1.45; white-space: pre; }
+    .brief { font-size: 16px; color: #444; margin: 10px 0 22px; }
+    .footer { margin-top: 40px; padding-top: 14px; border-top: 1px solid #ddd; color: #666; font-size: 12px; }
+    .mlabel { display: inline-block; margin-left: 8px; padding: 2px 6px; background: #d9ecff; color: #135a9c; border: 1px solid #98c0e4; border-radius: 10px; font-size: 12px; }
+    .navpath { color: #666; font-size: 13px; margin-bottom: 8px; }
+    a { color: #0d5ea6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+<div id="top">
+  <div id="titlearea">
+    <div id="projectname">MatkoJedyna_projekt</div>
+    <div id="projectbrief">Dokumentacja projektu w stylu Doxygen</div>
+  </div>
+</div>
+
+<div class="tabs">
+  <ul>
+    <li>Main Page</li>
+    <li>Files</li>
+    <li>Globals</li>
+  </ul>
+</div>
+
+<div class="contents">
+  <div class="navpath">MatkoJedyna_projekt</div>
+  <h1>Main Page</h1>
+  <div class="brief">Projekt zawiera trzy skrypty Lua: system dialogów NPC, automatyczne drzwi oraz ustawienie kamery pierwszoosobowej.</div>
+
+  <div class="summary">
+    <b>Spis treści</b>
+    <ul>
+      <li><a href="#files">Lista plików</a></li>
+      <li><a href="#dialogi">Dialogi.lua</a></li>
+      <li><a href="#drzwi">Drzwi.lua</a></li>
+      <li><a href="#kamera">KameraPierwszoosobowa.lua</a></li>
+    </ul>
+  </div>
+
+  <h2 id="files">File List</h2>
+  <table class="memberdecls">
+    <tr><th>Plik</th><th>Opis</th></tr>
+    <tr><td><a href="#dialogi">Dialogi.lua</a></td><td>System dialogowy NPC z wyborem odpowiedzi i obsługą UI.</td></tr>
+    <tr><td><a href="#drzwi">Drzwi.lua</a></td><td>Automatyczne otwieranie i zamykanie drzwi po wejściu gracza w trigger.</td></tr>
+    <tr><td><a href="#kamera">KameraPierwszoosobowa.lua</a></td><td>Przełączenie lokalnego gracza na tryb kamery pierwszoosobowej.</td></tr>
+  </table>
+
+  <h2 id="dialogi">Dialogi.lua File Reference</h2>
+  <div class="brief">System dialogowy NPC z gałęziami odpowiedzi, kontrolą kursora i reakcją na trigger.</div>
+
+  <h3>Functions</h3>
+  <div class="memitem">
+    <div class="memproto">local function LockPlayer()</div>
+    <div class="memdoc"><p>Pokazuje kursor i pozwala na interakcję z UI podczas dialogu.</p></div>
+  </div>
+  <div class="memitem">
+    <div class="memproto">local function UnlockPlayer()</div>
+    <div class="memdoc"><p>Ukrywa kursor i wyłącza interakcję z UI po zakończeniu dialogu.</p></div>
+  </div>
+  <div class="memitem">
+    <div class="memproto">local function HideDialog()</div>
+    <div class="memdoc"><p>Zamyka dialog, przywraca stan UI i aktualizuje podpowiedź interakcji.</p></div>
+  </div>
+  <div class="memitem">
+    <div class="memproto">local function ShowNode(nodeName)</div>
+    <div class="memdoc">
+      <p>Wyświetla wskazany węzeł dialogowy i uzupełnia teksty przycisków na podstawie drzewa dialogu.</p>
+      <table class="paramtable">
+        <tr><th>Parametr</th><th>Typ</th><th>Opis</th></tr>
+        <tr><td>nodeName</td><td>string</td><td>Nazwa bieżącego węzła dialogowego.</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <h3>Variables</h3>
+  <table class="doxtable">
+    <tr><th>Zmienna</th><th>Opis</th></tr>
+    <tr><td>LOCAL_PLAYER</td><td>Lokalny gracz.</td></tr>
+    <tr><td>currentNode</td><td>Aktualnie wyświetlany węzeł dialogu.</td></tr>
+    <tr><td>playerInRange</td><td>Informacja, czy gracz stoi w zasięgu triggera.</td></tr>
+    <tr><td>dialogOpen</td><td>Informacja, czy panel dialogowy jest otwarty.</td></tr>
+    <tr><td>OPEN_ACTION</td><td>Akcja wejścia uruchamiająca dialog.</td></tr>
+    <tr><td>CLOSE_ACTION</td><td>Akcja wejścia zamykająca dialog.</td></tr>
+    <tr><td>dialog</td><td>Drzewo dialogowe zawierające tekst NPC i przejścia między węzłami.</td></tr>
+  </table>
+
+  <h3>Dialog Tree</h3>
+  <table class="doxtable">
+    <tr><th>Węzeł</th><th>Tekst NPC</th><th>Odpowiedź A</th><th>Odpowiedź B</th><th>Następny węzeł</th></tr>
+    <tr><td>start</td><td>Matka: Córeczko, gdzie byłaś tak długo?</td><td>Córka: Spacerowałam przy rzece.</td><td>Córka: Spotkałam przyjaciół.</td><td>river / friends</td></tr>
+    <tr><td>river</td><td>Matka: Przy rzece? Sama?</td><td>Córka: Tak, chciałam pobyć sama.</td><td>Córka: Nie, był tam pies sąsiadów.</td><td>alone / dog</td></tr>
+    <tr><td>friends</td><td>Matka: Mam nadzieję, że byli grzeczni.</td><td>Córka: Tak mamo, tylko rozmawialiśmy.</td><td>Córka: Trochę się wygłupialiśmy.</td><td>finish / finish</td></tr>
+    <tr><td>alone</td><td>Matka: Rozumiem. Każdy czasem potrzebuje ciszy.</td><td>Córka: Dziękuję mamo.</td><td>-</td><td>finish</td></tr>
+    <tr><td>dog</td><td>Matka: To pewnie Bruno. On jest bardzo miły.</td><td>Córka: Tak, chwilę się z nim bawiłam.</td><td>-</td><td>finish</td></tr>
+    <tr><td>finish</td><td>Matka: Dobrze, chodź już do domu. Kolacja prawie gotowa.</td><td>Córka: Już idę!</td><td>-</td><td>koniec</td></tr>
+  </table>
+
+  <h3>Source Code</h3>
+  <div class="fragment">local TRIGGER = script:GetCustomProperty(&quot;Trigger&quot;):WaitForObject()
+local PANEL = script:GetCustomProperty(&quot;DialogPanel&quot;):WaitForObject()
+local NPC_TEXT = script:GetCustomProperty(&quot;NpcText&quot;):WaitForObject()
+local BUTTON_A = script:GetCustomProperty(&quot;ButtonA&quot;):WaitForObject()
+local BUTTON_B = script:GetCustomProperty(&quot;ButtonB&quot;):WaitForObject()
+local BUTTON_A_TEXT = script:GetCustomProperty(&quot;ButtonAText&quot;):WaitForObject()
+local BUTTON_B_TEXT = script:GetCustomProperty(&quot;ButtonBText&quot;):WaitForObject()
+local TALK_HINT = script:GetCustomProperty(&quot;TalkHint&quot;):WaitForObject()
+
+local LOCAL_PLAYER = Game.GetLocalPlayer()
+local currentNode = &quot;start&quot;
+local playerInRange = false
+local dialogOpen = false
+
+local OPEN_ACTION = &quot;Interact&quot;
+local CLOSE_ACTION = &quot;CloseDialog&quot;
+
+local dialog = {
+    start = {
+        text = &quot;Matka: Córeczko, gdzie byłaś tak długo?&quot;,
+        aText = &quot;Córka: Spacerowałam przy rzece.&quot;,
+        bText = &quot;Córka: Spotkałam przyjaciół.&quot;,
+        aNext = &quot;river&quot;,
+        bNext = &quot;friends&quot;
+    },
+
+    river = {
+        text = &quot;Matka: Przy rzece? Sama?&quot;,
+        aText = &quot;Córka: Tak, chciałam pobyć sama.&quot;,
+        bText = &quot;Córka: Nie, był tam pies sąsiadów.&quot;,
+        aNext = &quot;alone&quot;,
+        bNext = &quot;dog&quot;
+    },
+
+    friends = {
+        text = &quot;Matka: Mam nadzieję, że byli grzeczni.&quot;,
+        aText = &quot;Córka: Tak mamo, tylko rozmawialiśmy.&quot;,
+        bText = &quot;Córka: Trochę się wygłupialiśmy.&quot;,
+        aNext = &quot;finish&quot;,
+        bNext = &quot;finish&quot;
+    },
+
+    alone = {
+        text = &quot;Matka: Rozumiem. Każdy czasem potrzebuje ciszy.&quot;,
+        aText = &quot;Córka: Dziękuję mamo.&quot;,
+        bText = &quot;&quot;,
+        aNext = &quot;finish&quot;,
+        bNext = nil
+    },
+
+    dog = {
+        text = &quot;Matka: To pewnie Bruno. On jest bardzo miły.&quot;,
+        aText = &quot;Córka: Tak, chwilę się z nim bawiłam.&quot;,
+        bText = &quot;&quot;,
+        aNext = &quot;finish&quot;,
+        bNext = nil
+    },
+
+    finish = {
+        text = &quot;Matka: Dobrze, chodź już do domu. Kolacja prawie gotowa.&quot;,
+        aText = &quot;Córka: Już idę!&quot;,
+        bText = &quot;&quot;,
+        aNext = nil,
+        bNext = nil
+    }
+}
+
+local function LockPlayer()
+    UI.SetCursorVisible(true)
+    UI.SetCanCursorInteractWithUI(true)
+end
+
+local function UnlockPlayer()
+    UI.SetCursorVisible(false)
+    UI.SetCanCursorInteractWithUI(false)
+end
+
+local function HideDialog()
+    dialogOpen = false
+    PANEL.visibility = Visibility.FORCE_OFF
+    UnlockPlayer()
+
+    if playerInRange then
+        TALK_HINT.visibility = Visibility.INHERIT
+    else
+        TALK_HINT.visibility = Visibility.FORCE_OFF
+    end
+end
+
+local function ShowNode(nodeName)
+    currentNode = nodeName
+    local node = dialog[nodeName]
+
+    if not node then
+        HideDialog()
+        return
+    end
+
+    dialogOpen = true
+    PANEL.visibility = Visibility.INHERIT
+    NPC_TEXT.text = node.text
+    BUTTON_A_TEXT.text = node.aText or &quot;&quot;
+    BUTTON_B_TEXT.text = node.bText or &quot;&quot;
+
+    BUTTON_A.visibility = Visibility.INHERIT
+
+    if node.bText == nil or node.bText == &quot;&quot; then
+        BUTTON_B.visibility = Visibility.FORCE_OFF
+    else
+        BUTTON_B.visibility = Visibility.INHERIT
+    end
+
+    TALK_HINT.visibility = Visibility.FORCE_OFF
+    LockPlayer()
+end
+
+BUTTON_A.clickedEvent:Connect(function()
+    if not dialogOpen then return end
+    local node = dialog[currentNode]
+    if not node then return end
+
+    if node.aNext then
+        ShowNode(node.aNext)
+    else
+        HideDialog()
+    end
+end)
+
+BUTTON_B.clickedEvent:Connect(function()
+    if not dialogOpen then return end
+    local node = dialog[currentNode]
+    if not node then return end
+
+    if node.bNext then
+        ShowNode(node.bNext)
+    else
+        HideDialog()
+    end
+end)
+
+TRIGGER.beginOverlapEvent:Connect(function(trigger, other)
+    if other == LOCAL_PLAYER then
+        playerInRange = true
+        if not dialogOpen then
+            TALK_HINT.visibility = Visibility.INHERIT
+        end
+    end
+end)
+
+TRIGGER.endOverlapEvent:Connect(function(trigger, other)
+    if other == LOCAL_PLAYER then
+        playerInRange = false
+        TALK_HINT.visibility = Visibility.FORCE_OFF
+        HideDialog()
+    end
+end)
+
+Input.actionPressedEvent:Connect(function(player, actionName)
+    if player ~= LOCAL_PLAYER then return end
+
+    if actionName == OPEN_ACTION and playerInRange and not dialogOpen then
+        ShowNode(&quot;start&quot;)
+    elseif actionName == CLOSE_ACTION and dialogOpen then
+        HideDialog()
+    end
+end)
+
+PANEL.visibility = Visibility.FORCE_OFF
+TALK_HINT.visibility = Visibility.FORCE_OFF
+UI.SetCursorVisible(false)
+UI.SetCanCursorInteractWithUI(false)
+</div>
+
+  <h2 id="drzwi">Drzwi.lua File Reference</h2>
+  <div class="brief">Skrypt sterujący obrotem drzwi po wykryciu wejścia i wyjścia gracza z triggera.</div>
+
+  <h3>Functions</h3>
+  <div class="memitem">
+    <div class="memproto">local function OpenDoor()</div>
+    <div class="memdoc"><p>Otwiera drzwi przez obrót do wcześniej obliczonej rotacji otwartej.</p></div>
+  </div>
+  <div class="memitem">
+    <div class="memproto">local function CloseDoor()</div>
+    <div class="memdoc"><p>Zamyka drzwi, przywracając ich rotację początkową.</p></div>
+  </div>
+
+  <h3>Variables</h3>
+  <table class="doxtable">
+    <tr><th>Zmienna</th><th>Opis</th></tr>
+    <tr><td>DOOR</td><td>Referencja do obiektu drzwi.</td></tr>
+    <tr><td>TRIGGER</td><td>Trigger wykrywający obecność gracza.</td></tr>
+    <tr><td>closedRotation</td><td>Rotacja początkowa drzwi.</td></tr>
+    <tr><td>openRotation</td><td>Rotacja drzwi po otwarciu.</td></tr>
+    <tr><td>isOpen</td><td>Stan otwarcia drzwi.</td></tr>
+  </table>
+
+  <h3>Callbacks</h3>
+  <div class="memitem">
+    <div class="memproto">TRIGGER.beginOverlapEvent:Connect(function(trigger, other)) <span class="mlabel">callback</span></div>
+    <div class="memdoc"><p>Po wejściu gracza do triggera otwiera drzwi.</p></div>
+  </div>
+  <div class="memitem">
+    <div class="memproto">TRIGGER.endOverlapEvent:Connect(function(trigger, other)) <span class="mlabel">callback</span></div>
+    <div class="memdoc"><p>Po wyjściu gracza z triggera zamyka drzwi.</p></div>
+  </div>
+
+  <h3>Source Code</h3>
+  <div class="fragment">local DOOR = script:GetCustomProperty(&quot;Door&quot;):WaitForObject()
+local TRIGGER = script:GetCustomProperty(&quot;Trigger&quot;):WaitForObject()
+
+local closedRotation = DOOR:GetRotation()
+local openRotation = closedRotation + Rotation.New(0, 0, 90)
+
+local isOpen = false
+
+local function OpenDoor()
+    if isOpen then return end
+    isOpen = true
+    DOOR:RotateTo(openRotation, 0.4, true)
+end
+
+local function CloseDoor()
+    if not isOpen then return end
+    isOpen = false
+    DOOR:RotateTo(closedRotation, 0.4, true)
+end
+
+TRIGGER.beginOverlapEvent:Connect(function(trigger, other)
+    if other:IsA(&quot;Player&quot;) then
+        OpenDoor()
+    end
+end)
+
+TRIGGER.endOverlapEvent:Connect(function(trigger, other)
+    if other:IsA(&quot;Player&quot;) then
+        CloseDoor()
+    end
+end)
+</div>
+
+  <h2 id="kamera">KameraPierwszoosobowa.lua File Reference</h2>
+  <div class="brief">Krótki skrypt ustawiający kamerę lokalnego gracza w tryb pierwszoosobowy po krótkim opóźnieniu.</div>
+
+  <h3>Variables</h3>
+  <table class="doxtable">
+    <tr><th>Zmienna</th><th>Opis</th></tr>
+    <tr><td>player</td><td>Lokalny gracz, dla którego zmieniany jest tryb kamery.</td></tr>
+  </table>
+
+  <h3>Behavior</h3>
+  <div class="memitem">
+    <div class="memproto">Task.Wait(0.5)</div>
+    <div class="memdoc"><p>Oczekuje pół sekundy przed zmianą trybu kamery.</p></div>
+  </div>
+  <div class="memitem">
+    <div class="memproto">player:SetOverrideCameraMode(1)</div>
+    <div class="memdoc"><p>Przełącza gracza na kamerę pierwszoosobową.</p></div>
+  </div>
+
+  <h3>Source Code</h3>
+  <div class="fragment">local player = Game.GetLocalPlayer()
+
+Task.Wait(0.5)
+
+player:SetOverrideCameraMode(1)
+</div>
+
+  <div class="footer">Generated by Doxygen style mockup for MatkoJedyna_projekt</div>
+</div>
+</body>
+</html>
