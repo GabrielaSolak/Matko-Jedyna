@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MatkoJedyna_projekt: Dokumentacja techniczna</title>
+
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      color: #222;
+      background: #fff;
+    }
+
+    #top {
+      background: #2d4e6c;
+      color: #fff;
+      padding: 14px 20px;
+      border-bottom: 4px solid #8fb3d1;
+    }
+
+    #titlearea {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    #projectname {
+      font-size: 30px;
+      font-weight: bold;
+    }
+
+    #projectbrief {
+      font-size: 14px;
+      margin-top: 4px;
+      color: #dce9f5;
+    }
+
+    .tabs {
+      background: #e8eef3;
+      border-bottom: 1px solid #b6c7d6;
+    }
+
+    .tabs ul {
+      list-style: none;
+      margin: 0 auto;
+      padding: 0;
+      max-width: 1180px;
+      display: flex;
+      gap: 8px;
+    }
+
+    .tabs li {
+      padding: 10px 14px;
+      font-size: 14px;
+      color: #234;
+    }
+
+    .contents {
+      max-width: 1180px;
+      margin: 24px auto;
+      padding: 0 20px 50px;
+    }
+
+    h1 {
+      font-size: 30px;
+      border-bottom: 1px solid #d6d6d6;
+      padding-bottom: 8px;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 22px;
+      margin-top: 34px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 6px;
+      color: #24445f;
+    }
+
+    h3 {
+      font-size: 18px;
+      margin-top: 24px;
+      color: #24445f;
+    }
+
+    .brief {
+      font-size: 16px;
+      color: #444;
+      margin: 10px 0 22px;
+    }
+
+    .summary {
+      background: #f7f9fb;
+      border: 1px solid #d5dde5;
+      padding: 12px 16px;
+      border-radius: 4px;
+    }
+
+    .summary ul {
+      margin: 8px 0 0 18px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 8px;
+    }
+
+    th, td {
+      border: 1px solid #d7dfe7;
+      padding: 8px 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f4f7fa;
+    }
+
+    .memitem {
+      border: 1px solid #d6dfe8;
+      border-radius: 4px;
+      margin: 16px 0;
+      overflow: hidden;
+    }
+
+    .memproto {
+      background: #eef3f7;
+      padding: 10px 14px;
+      font-family: Consolas, monospace;
+      font-size: 14px;
+    }
+
+    .memdoc {
+      padding: 12px 14px;
+      background: #fff;
+    }
+
+    .fragment {
+      background: #f8f8f8;
+      border: 1px solid #ddd;
+      padding: 12px;
+      overflow-x: auto;
+      font-family: Consolas, monospace;
+      font-size: 13px;
+      line-height: 1.45;
+      white-space: pre;
+    }
+
+    .footer {
+      margin-top: 40px;
+      padding-top: 14px;
+      border-top: 1px solid #ddd;
+      color: #666;
+      font-size: 12px;
+    }
+
+    code {
+      font-family: Consolas, monospace;
+      background: #f4f4f4;
+      padding: 1px 4px;
+      border-radius: 3px;
+    }
+
+    a {
+      color: #0d5ea6;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+
+<div id="top">
+  <div id="titlearea">
+    <div id="projectname">MatkoJedyna_projekt</div>
+    <div id="projectbrief">Dokumentacja techniczna projektu gry wykonanej w Core / Lua</div>
+  </div>
+</div>
+
+<div class="tabs">
+  <ul>
+    <li>Main Page</li>
+    <li>Files</li>
+    <li>Globals</li>
+    <li>UI</li>
+    <li>Gameplay</li>
+  </ul>
+</div>
+
+<div class="contents">
+
+  <h1>Main Page</h1>
+
+  <p class="brief">
+    Projekt <b>MatkoJedyna</b> to humorystyczna gra fabularno-zadaniowa wykonana w środowisku Core.
+    Gracz wciela się w Klaudię, która musi przygotować ciasto przed wizytą teściowej.
+    Projekt wykorzystuje skrypty Lua, triggery, UI, proste minigry, teleportację oraz system wyborów
+    wpływających na paski reputacji i zaufania rodziny.
+  </p>
+
+  <div class="summary">
+    <b>Spis treści</b>
+    <ul>
+      <li><a href="#cel">Cel projektu</a></li>
+      <li><a href="#technologie">Technologie</a></li>
+      <li><a href="#opis">Opis działania gry</a></li>
+      <li><a href="#mechanics">Główne mechaniki</a></li>
+      <li><a href="#hierarchy">Struktura hierarchii</a></li>
+      <li><a href="#files">Lista skryptów</a></li>
+      <li><a href="#ui">Interfejs użytkownika</a></li>
+      <li><a href="#scripts">Opis skryptów</a></li>
+      <li><a href="#events">System eventów</a></li>
+      <li><a href="#testing">Testowanie</a></li>
+      <li><a href="#uwagi">Uwagi techniczne</a></li>
+      <li><a href="#summary">Podsumowanie</a></li>
+    </ul>
+  </div>
+
+  <h2 id="cel">Cel projektu</h2>
+
+  <p>
+    Celem projektu było stworzenie krótkiej gry fabularnej w środowisku Core, opartej na dialogach,
+    prostych zadaniach i interakcji z postaciami NPC. Gra ma charakter komediowy i przedstawia
+    serię przeszkód, które bohaterka musi pokonać, aby przygotować ciasto na wizytę teściowej.
+  </p>
+
+  <h2 id="technologie">Technologie</h2>
+
+  <table>
+    <tr>
+      <th>Technologia</th>
+      <th>Zastosowanie</th>
+    </tr>
+    <tr>
+      <td>Core</td>
+      <td>Silnik gry, edytor mapy, obsługa obiektów, UI, triggerów i assetów.</td>
+    </tr>
+    <tr>
+      <td>Lua</td>
+      <td>Logika gry, dialogi, obsługa UI, triggery, teleporty i minigry.</td>
+    </tr>
+    <tr>
+      <td>Core UI</td>
+      <td>Panele dialogowe, przyciski, paski postępu, grafiki końcowe i pola tekstowe.</td>
+    </tr>
+    <tr>
+      <td>Triggers</td>
+      <td>Interakcje z NPC, obiektami, portalem, piekarnikiem i przedmiotami zadaniowymi.</td>
+    </tr>
+    <tr>
+      <td>Events API</td>
+      <td>Komunikacja między triggerami, skryptami UI i systemami gry.</td>
+    </tr>
+  </table>
+
+  <h2 id="opis">Opis działania gry</h2>
+
+  <p>
+    Gra rozpoczyna się telefonem od teściowej, który uruchamia główny cel gry: przygotowanie ciasta.
+    Gracz jest następnie prowadzony przez kolejne etapy: zdobywanie składników, zakupy, rozmowę z mężem,
+    odebranie auta od mechanika, mandat, wizytę u sąsiadki, liczenie kur, mieszanie ciasta, użycie piekarnika,
+    teleport do labiryntu po cukierniczkę oraz finałowe podsumowanie.
+  </p>
+
+  <p>
+    Każdy etap składa się z interakcji, komunikatu lub dialogu, a następnie przejścia do kolejnego zadania.
+    Projekt wykorzystuje prostą strukturę eventów oraz osobne UI dla konkretnych scen.
+  </p>
+
+  <h2 id="mechanics">Główne mechaniki</h2>
+
+  <table>
+    <tr>
+      <th>Mechanika</th>
+      <th>Opis</th>
+    </tr>
+    <tr>
+      <td>System dialogów</td>
+      <td>Dialogi wyświetlane są linijka po linijce w panelach UI. Część dialogów zawiera wybory gracza.</td>
+    </tr>
+    <tr>
+      <td>Wybory gracza</td>
+      <td>Przyciski UI pozwalają podjąć decyzję, np. zachować się grzecznie lub niegrzecznie, kupić słodycze lub dać napiwek.</td>
+    </tr>
+    <tr>
+      <td>Reputacja w mieście</td>
+      <td>Pasek reputacji zmienia się w zależności od decyzji gracza.</td>
+    </tr>
+    <tr>
+      <td>Zaufanie rodziny</td>
+      <td>Pasek rodzinny pokazuje, jak decyzje wpływają na relacje domowe.</td>
+    </tr>
+    <tr>
+      <td>Lista składników</td>
+      <td>UI pokazuje, które składniki zostały zdobyte: mąka, jabłka, jajka i cukier.</td>
+    </tr>
+    <tr>
+      <td>Minigra mieszania ciasta</td>
+      <td>Gracz musi kliknąć przycisk odpowiednią liczbę razy przed końcem czasu.</td>
+    </tr>
+    <tr>
+      <td>Liczenie kur</td>
+      <td>Gracz wpisuje liczbę kur w polu UITextEntry. Poprawna odpowiedź to 9.</td>
+    </tr>
+    <tr>
+      <td>Portal i labirynt</td>
+      <td>Wejście w portal przenosi gracza do osobnego obszaru, w którym znajduje cukierniczkę.</td>
+    </tr>
+    <tr>
+      <td>Finał</td>
+      <td>Po ukończeniu ostatniego zadania pojawia się grafika końcowa z podsumowaniem wyniku.</td>
+    </tr>
+  </table>
+
+  <h2 id="hierarchy">Struktura hierarchii</h2>
+
+  <div class="fragment">Scene: Main
+├── ServerContext
+│   ├── PortalTrigger
+│   │   └── PortalScript
+│   ├── SugarTrigger
+│   │   └── SugarScript
+│   └── inne triggery wymagające teleportu gracza
+│
+├── ClientContext
+│   ├── ShelfDialogueUI
+│   │   ├── ShelfDialogueText
+│   │   ├── NiceButton
+│   │   └── RudeButton
+│   │
+│   ├── CashDialogueUI
+│   │   ├── CashDialogueText
+│   │   ├── SweetButton
+│   │   └── TipButton
+│   │
+│   ├── HusbandDialogueUI
+│   │   ├── HusbandDialogueText
+│   │   ├── TellTicketButton
+│   │   └── HideTicketButton
+│   │
+│   ├── ChickenUI
+│   │   ├── QuestionText
+│   │   ├── InputField
+│   │   ├── SubmitButton
+│   │   └── ChickenUIScript
+│   │
+│   ├── MixingUI
+│   │   ├── MixingText
+│   │   ├── TimerText
+│   │   ├── MixButton
+│   │   └── MixingUIScript
+│   │
+│   ├── OvenMessageUI
+│   │   ├── OvenMessageText
+│   │   └── OvenMessageScript
+│   │
+│   ├── FinalUI
+│   │   ├── FinalImage
+│   │   └── FinalUIScript
+│   │
+│   ├── ShoppingListUI
+│   │   ├── ShoppingListText
+│   │   └── ShoppingListScript
+│   │
+│   ├── ReputationUI
+│   │   └── ReputationBar
+│   │
+│   └── FamilyUI
+│       └── FamilyBar
+│
+├── STORE
+│   ├── AppleNPC
+│   │   └── Trigger
+│   │       └── AppleNPCScript
+│   └── CashNPC
+│       └── Trigger
+│           └── CashNPCScript
+│
+├── HOUSE
+│   ├── HusbandNPC
+│   │   └── Trigger
+│   │       └── HusbandDialogueScript
+│   ├── BowlTrigger
+│   │   └── BowlTriggerScript
+│   └── OvenTrigger
+│       └── OvenTriggerScript
+│
+├── NeighborHouse
+│   ├── NeighborNPC
+│   │   └── Trigger
+│   │       └── NeighborDialogueScript
+│   ├── Chicken1
+│   ├── Chicken2
+│   ├── Chicken3
+│   ├── Chicken4
+│   ├── Chicken5
+│   ├── Chicken6
+│   ├── Chicken7
+│   ├── Chicken8
+│   └── Chicken9
+│
+├── LabyrinthSpawn
+└── ExitSpawn</div>
+
+  <h2 id="files">Lista skryptów</h2>
+
+  <table>
+    <tr>
+      <th>Plik</th>
+      <th>Kontekst</th>
+      <th>Opis</th>
+    </tr>
+    <tr>
+      <td>AppleNPCScript.lua</td>
+      <td>ClientContext</td>
+      <td>Obsługuje NPC przy półce w sklepie, wybór zachowania i zdobycie jabłek.</td>
+    </tr>
+    <tr>
+      <td>CashNPCScript.lua</td>
+      <td>ClientContext</td>
+      <td>Obsługuje dialog przy kasie oraz wybór między słodyczami a napiwkiem.</td>
+    </tr>
+    <tr>
+      <td>HusbandDialogueScript.lua</td>
+      <td>ClientContext</td>
+      <td>Obsługuje rozmowy z mężem i wybór dotyczący mandatu.</td>
+    </tr>
+    <tr>
+      <td>MechanicDialogueScript.lua</td>
+      <td>ClientContext</td>
+      <td>Obsługuje scenę odbioru auta od mechanika.</td>
+    </tr>
+    <tr>
+      <td>SpeedTriggerScript.lua</td>
+      <td>ClientContext</td>
+      <td>Uruchamia efekt mandatu po wjechaniu w trigger.</td>
+    </tr>
+    <tr>
+      <td>NeighborDialogueScript.lua</td>
+      <td>ClientContext</td>
+      <td>Obsługuje dialog z sąsiadką i start zadania z liczeniem kur.</td>
+    </tr>
+    <tr>
+      <td>ChickenUIScript.lua</td>
+      <td>ClientContext</td>
+      <td>Obsługuje UI do wpisania liczby kur.</td>
+    </tr>
+    <tr>
+      <td>BowlTriggerScript.lua</td>
+      <td>ClientContext</td>
+      <td>Uruchamia minigrę mieszania ciasta.</td>
+    </tr>
+    <tr>
+      <td>MixingUIScript.lua</td>
+      <td>ClientContext</td>
+      <td>Obsługuje minigrę klikania na czas.</td>
+    </tr>
+    <tr>
+      <td>OvenTriggerScript.lua</td>
+      <td>ClientContext</td>
+      <td>Obsługuje interakcję z piekarnikiem.</td>
+    </tr>
+    <tr>
+      <td>PortalScript.lua</td>
+      <td>ServerContext</td>
+      <td>Teleportuje gracza do labiryntu.</td>
+    </tr>
+    <tr>
+      <td>SugarScript.lua</td>
+      <td>ServerContext</td>
+      <td>Obsługuje znalezienie cukierniczki i teleport powrotny.</td>
+    </tr>
+    <tr>
+      <td>FinalUIScript.lua</td>
+      <td>ClientContext</td>
+      <td>Pokazuje grafikę końcową gry.</td>
+    </tr>
+    <tr>
+      <td>PhoneIntroScript.lua / IntroScript.lua</td>
+      <td>ClientContext</td>
+      <td>Obsługuje początkowy telefon od teściowej, ekran wprowadzający oraz rozpoczęcie głównego celu gry.</td>
+    </tr>
+    <tr>
+      <td>KitchenTriggerScript.lua</td>
+      <td>ClientContext</td>
+      <td>Obsługuje początkowy trigger w kuchni, komunikat o brakujących składnikach oraz pokazanie listy zakupów.</td>
+    </tr>
+    <tr>
+      <td>DaughterRoomSugarScript.lua</td>
+      <td>ClientContext</td>
+      <td>Obsługuje trigger w pokoju córki i pokazuje komunikat o lokalizacji cukierniczki.</td>
+    </tr>
+    <tr>
+      <td>OvenMessageScript.lua</td>
+      <td>ClientContext</td>
+      <td>Wyświetla komunikaty tekstowe po interakcji z piekarnikiem.</td>
+    </tr>
+    <tr>
+      <td>ShoppingListScript.lua</td>
+      <td>ClientContext</td>
+      <td>Aktualizuje i ukrywa listę składników po zdobyciu kolejnych produktów.</td>
+    </tr>
+    <tr>
+      <td>MessageUIScript.lua / ShowMessageScript.lua</td>
+      <td>ClientContext</td>
+      <td>Uniwersalny skrypt komunikatów ekranowych wykorzystywany przez inne systemy gry.</td>
+    </tr>
+    <tr>
+      <td>DoorScript.lua / DoorTriggerScript.lua</td>
+      <td>ClientContext / ServerContext</td>
+      <td>Opcjonalny skrypt obsługujący automatyczne drzwi lub przejścia między pomieszczeniami.</td>
+    </tr>
+    <tr>
+      <td>FirstPersonCameraScript.lua / CameraScript.lua</td>
+      <td>ClientContext</td>
+      <td>Opcjonalny skrypt ustawiający kamerę gracza w odpowiednim trybie.</td>
+    </tr>
+    <tr>
+      <td>DialogClient.lua</td>
+      <td>ClientContext</td>
+      <td>Skrypt pomocniczy do obsługi dialogów UI, jeżeli wykorzystywany jest wspólny system dialogowy.</td>
+    </tr>
+
+  </table>
+
+  <h2 id="ui">Interfejs użytkownika</h2>
+
+  <table>
+    <tr>
+      <th>UI</th>
+      <th>Elementy</th>
+      <th>Funkcja</th>
+    </tr>
+    <tr>
+      <td>ShelfDialogueUI</td>
+      <td>ShelfDialogueText, NiceButton, RudeButton</td>
+      <td>Dialog z klientką przy półce.</td>
+    </tr>
+    <tr>
+      <td>CashDialogueUI</td>
+      <td>CashDialogueText, SweetButton, TipButton</td>
+      <td>Dialog przy kasie oraz wybór słodyczy lub napiwku.</td>
+    </tr>
+    <tr>
+      <td>HusbandDialogueUI</td>
+      <td>HusbandDialogueText, TellTicketButton, HideTicketButton</td>
+      <td>Dialog z mężem oraz wybór dotyczący mandatu.</td>
+    </tr>
+    <tr>
+      <td>ChickenUI</td>
+      <td>QuestionText, InputField, SubmitButton</td>
+      <td>Panel do wpisania liczby kur.</td>
+    </tr>
+    <tr>
+      <td>MixingUI</td>
+      <td>MixingText, TimerText, MixButton</td>
+      <td>UI minigry mieszania ciasta.</td>
+    </tr>
+    <tr>
+      <td>ShoppingListUI</td>
+      <td>ShoppingListText</td>
+      <td>Lista zdobytych składników.</td>
+    </tr>
+    <tr>
+      <td>ReputationUI</td>
+      <td>ReputationBar</td>
+      <td>Pasek reputacji miasta.</td>
+    </tr>
+    <tr>
+      <td>FamilyUI</td>
+      <td>FamilyBar</td>
+      <td>Pasek zaufania rodziny.</td>
+    </tr>
+    <tr>
+      <td>FinalUI</td>
+      <td>FinalImage</td>
+      <td>Końcowy ekran graficzny.</td>
+    </tr>
+  </table>
+
+  <h2 id="scripts">Opis skryptów</h2>
+
+  <h3>AppleNPCScript.lua</h3>
+  <p>
+    Skrypt uruchamia dialog z NPC stojącym przy półce z jabłkami. Po zakończeniu wprowadzenia
+    pokazuje dwa przyciski wyboru. Wybór wpływa na pasek reputacji, a następnie aktualizuje listę składników.
+  </p>
+
+  <div class="memitem">
+    <div class="memproto">OnInteracted(trigger, player)</div>
+    <div class="memdoc">Uruchamia dialog i pokazuje przyciski wyboru.</div>
+  </div>
+
+  <div class="memitem">
+    <div class="memproto">ChooseNice()</div>
+    <div class="memdoc">Zwiększa reputację i kończy scenę zdobyciem jabłek.</div>
+  </div>
+
+  <div class="memitem">
+    <div class="memproto">ChooseRude()</div>
+    <div class="memdoc">Zmniejsza reputację i kończy scenę zdobyciem jabłek.</div>
+  </div>
+
+  <h3>CashNPCScript.lua</h3>
+  <p>
+    Skrypt obsługuje scenę przy kasie. Gracz wybiera między kupieniem czegoś słodkiego a wrzuceniem napiwku.
+    Decyzja zmienia wartości pasków reputacji i zaufania rodziny.
+  </p>
+
+  <table>
+    <tr>
+      <th>Wybór</th>
+      <th>Efekt</th>
+    </tr>
+    <tr>
+      <td>Kup coś słodkiego</td>
+      <td>Zaufanie rodziny +10, reputacja -5.</td>
+    </tr>
+    <tr>
+      <td>Daj napiwek</td>
+      <td>Reputacja +10, zaufanie rodziny -5.</td>
+    </tr>
+  </table>
+
+  <h3>HusbandDialogueScript.lua</h3>
+  <p>
+    Skrypt obsługuje kilka etapów dialogu z mężem. Pierwszy etap kieruje gracza do mechanika,
+    drugi zawiera wybór dotyczący mandatu, a trzeci przypomina o kolejnym celu.
+  </p>
+
+  <table>
+    <tr>
+      <th>Etap</th>
+      <th>Opis</th>
+    </tr>
+    <tr>
+      <td>stage 1</td>
+      <td>Rozmowa przed odebraniem auta.</td>
+    </tr>
+    <tr>
+      <td>stage 2</td>
+      <td>Rozmowa po odebraniu auta i wybór dotyczący mandatu.</td>
+    </tr>
+    <tr>
+      <td>stage 3</td>
+      <td>Dialog pomocniczy po zakończeniu głównej rozmowy.</td>
+    </tr>
+  </table>
+
+  <h3>MechanicDialogueScript.lua</h3>
+  <p>
+    Skrypt obsługuje krótką interakcję z mechanikiem. Po kliknięciu triggera wyświetla dialog
+    i oznacza fabularnie odebranie auta.
+  </p>
+
+  <h3>SpeedTriggerScript.lua</h3>
+  <p>
+    Po wjechaniu w trigger uruchamiana jest sekwencja mandatu. Skrypt pokazuje efekt flash,
+    grafikę mandatu oraz komentarz tekstowy.
+  </p>
+
+  <h3>NeighborDialogueScript.lua</h3>
+  <p>
+    Skrypt obsługuje sąsiadkę znajdującą się w kurniku. Po dialogu wysyła event otwierający UI
+    do wpisania liczby kur.
+  </p>
+
+  <h3>ChickenUIScript.lua</h3>
+  <p>
+    Skrypt obsługuje UI z pytaniem o liczbę kur. Gracz wpisuje odpowiedź w polu UITextEntry.
+    Po wpisaniu poprawnej liczby aktualizowana jest lista składników.
+  </p>
+
+  <table>
+    <tr>
+      <th>Zmienna</th>
+      <th>Opis</th>
+    </tr>
+    <tr>
+      <td>correctAnswer</td>
+      <td>Poprawna liczba kur. W projekcie ustawiona na 9.</td>
+    </tr>
+    <tr>
+      <td>QUESTION</td>
+      <td>Tekst pytania i komunikatów.</td>
+    </tr>
+    <tr>
+      <td>INPUT</td>
+      <td>Pole UITextEntry, do którego gracz wpisuje odpowiedź.</td>
+    </tr>
+    <tr>
+      <td>BUTTON</td>
+      <td>Przycisk zatwierdzający odpowiedź.</td>
+    </tr>
+  </table>
+
+  <h3>BowlTriggerScript.lua</h3>
+  <p>
+    Skrypt znajduje się pod triggerem przy misce. Po interakcji wysyła event <code>StartMixingGame</code>,
+    który uruchamia minigrę mieszania ciasta.
+  </p>
+
+  <div class="fragment">local TRIGGER = script.parent
+local used = false
+
+function OnInteracted(trigger, player)
+    if used then return end
+    used = true
+
+    print("MISKA KLIKNIETA")
+    Events.Broadcast("StartMixingGame")
+end
+
+TRIGGER.interactedEvent:Connect(OnInteracted)</div>
+
+  <h3>MixingUIScript.lua</h3>
+  <p>
+    Skrypt zarządza minigrą mieszania ciasta. UI pokazuje liczbę kliknięć i pozostały czas.
+    Jeżeli gracz wykona wymaganą liczbę kliknięć przed końcem czasu, minigra kończy się sukcesem.
+  </p>
+
+  <table>
+    <tr>
+      <th>Zmienna</th>
+      <th>Opis</th>
+    </tr>
+    <tr>
+      <td>neededClicks</td>
+      <td>Liczba kliknięć potrzebnych do ukończenia minigry.</td>
+    </tr>
+    <tr>
+      <td>timeLimit</td>
+      <td>Limit czasu w sekundach.</td>
+    </tr>
+    <tr>
+      <td>clicks</td>
+      <td>Aktualna liczba kliknięć.</td>
+    </tr>
+    <tr>
+      <td>timeLeft</td>
+      <td>Pozostały czas.</td>
+    </tr>
+    <tr>
+      <td>active</td>
+      <td>Informuje, czy minigra jest aktywna.</td>
+    </tr>
+  </table>
+
+  <h3>OvenTriggerScript.lua</h3>
+  <p>
+    Skrypt odpowiada za interakcję z piekarnikiem. Może uruchamiać komunikaty fabularne,
+    przejście do kolejnego celu albo finałową grafikę gry.
+  </p>
+
+  <h3>PortalScript.lua</h3>
+  <p>
+    Skrypt działa w ServerContext, ponieważ korzysta z funkcji <code>SetWorldPosition()</code>.
+    Po wejściu gracza w trigger przenosi go do obiektu <code>LabyrinthSpawn</code>.
+  </p>
+
+  <div class="fragment">local TRIGGER = script.parent
+local DESTINATION = World.FindObjectByName("LabyrinthSpawn")
+
+function OnBeginOverlap(trigger, other)
+    if other:IsA("Player") then
+        other:SetWorldPosition(DESTINATION:GetWorldPosition() + Vector3.New(0, 0, 100))
+    end
+end
+
+TRIGGER.beginOverlapEvent:Connect(OnBeginOverlap)</div>
+
+  <h3>SugarScript.lua</h3>
+  <p>
+    Skrypt znajduje się w ServerContext. Po wejściu w trigger przy cukierniczce wysyła komunikat,
+    czeka kilka sekund i teleportuje gracza do obiektu <code>ExitSpawn</code>.
+  </p>
+
+  <h3>FinalUIScript.lua</h3>
+  <p>
+    Skrypt pokazuje końcowy ekran graficzny po otrzymaniu eventu <code>ShowFinalImage</code>.
+  </p>
+
+  <div class="fragment">local UI = script.parent
+
+UI.visibility = Visibility.FORCE_OFF
+
+function ShowFinalImage()
+    UI.visibility = Visibility.INHERIT
+end
+
+Events.Connect("ShowFinalImage", ShowFinalImage)</div>
+
+  
+  <h3>PhoneIntroScript.lua / IntroScript.lua</h3>
+  <p>
+    Skrypt odpowiada za początkową scenę telefonu od teściowej, pokazanie wprowadzenia fabularnego
+    oraz przejście do właściwej części gry. Może również uruchamiać ekran tytułowy lub ekran przejściowy
+    przed teleportem do miasta.
+  </p>
+
+  <h3>KitchenTriggerScript.lua</h3>
+  <p>
+    Skrypt wykorzystywany na początku gry w kuchni. Po wejściu w trigger informuje gracza,
+    że brakuje składników do ciasta, pokazuje listę produktów i kieruje gracza do sklepu.
+  </p>
+
+  <h3>DaughterRoomSugarScript.lua</h3>
+  <p>
+    Skrypt obsługuje osobny trigger w pokoju córki. Po interakcji wyświetla krótki komunikat
+    informujący, gdzie znajduje się cukierniczka. Wykorzystuje istniejący panel komunikatów UI.
+  </p>
+
+  <h3>OvenMessageScript.lua</h3>
+  <p>
+    Skrypt odpowiada za wyświetlanie komunikatów po interakcji z piekarnikiem. Informuje gracza
+    o włożeniu ciasta do pieca, konieczności pilnowania pieczenia oraz o braku cukru.
+  </p>
+
+  <h3>ShoppingListScript.lua</h3>
+  <p>
+    Skrypt zarządza listą składników widoczną w UI. Aktualizuje stan produktów po zdobyciu jabłek,
+    jajek i cukru oraz może ukrywać listę po zakończeniu zadania.
+  </p>
+
+  <h3>MessageUIScript.lua / ShowMessageScript.lua</h3>
+  <p>
+    Uniwersalny skrypt do krótkich komunikatów ekranowych. Może odbierać eventy typu
+    <code>ShowMessage</code> i wyświetlać pojedynczy tekst przez kilka sekund.
+  </p>
+
+  <h3>DoorScript.lua / DoorTriggerScript.lua</h3>
+  <p>
+    Opcjonalny skrypt obsługujący otwieranie drzwi lub przejścia po wejściu gracza w trigger.
+    Może być używany w domu, sklepie albo innych pomieszczeniach.
+  </p>
+
+  <h3>FirstPersonCameraScript.lua / CameraScript.lua</h3>
+  <p>
+    Opcjonalny skrypt ustawiający kamerę gracza, np. w trybie pierwszoosobowym lub w innym
+    trybie wymaganym przez daną scenę.
+  </p>
+
+  <h3>DialogClient.lua</h3>
+  <p>
+    Skrypt pomocniczy do obsługi dialogów po stronie klienta. Może odpowiadać za otwieranie panelu,
+    pokazywanie kursora, obsługę przycisków i zamykanie okna dialogowego.
+  </p>
+
+
+  <h2 id="events">System eventów</h2>
+
+  <table>
+    <tr>
+      <th>Event</th>
+      <th>Wysyłany przez</th>
+      <th>Odbierany przez</th>
+      <th>Opis</th>
+    </tr>
+    <tr>
+      <td>StartMixingGame</td>
+      <td>BowlTriggerScript</td>
+      <td>MixingUIScript</td>
+      <td>Uruchamia minigrę mieszania ciasta.</td>
+    </tr>
+    <tr>
+      <td>CakeMixed</td>
+      <td>MixingUIScript</td>
+      <td>Opcjonalnie inne skrypty</td>
+      <td>Informuje, że ciasto zostało wymieszane.</td>
+    </tr>
+    <tr>
+      <td>ShowChickenUI</td>
+      <td>NeighborDialogueScript</td>
+      <td>ChickenUIScript</td>
+      <td>Pokazuje UI do wpisania liczby kur.</td>
+    </tr>
+    <tr>
+      <td>AllIngredientsCollected</td>
+      <td>SugarScript</td>
+      <td>ShoppingListScript</td>
+      <td>Odhacza wszystkie składniki na liście.</td>
+    </tr>
+    <tr>
+      <td>ShowFinalImage</td>
+      <td>OvenTriggerScript</td>
+      <td>FinalUIScript</td>
+      <td>Pokazuje końcową grafikę.</td>
+    </tr>
+    <tr>
+      <td>ShowMessage</td>
+      <td>Różne skrypty gry</td>
+      <td>MessageUIScript / wybrany panel komunikatów</td>
+      <td>Pokazuje krótki komunikat tekstowy na ekranie.</td>
+    </tr>
+    <tr>
+      <td>SugarCollected</td>
+      <td>SugarScript</td>
+      <td>ShoppingListScript</td>
+      <td>Aktualizuje listę składników po znalezieniu cukierniczki.</td>
+    </tr>
+    <tr>
+      <td>HideShoppingList</td>
+      <td>SugarScript lub inny skrypt kończący etap</td>
+      <td>ShoppingListScript</td>
+      <td>Ukrywa listę składników po zakończeniu zadania.</td>
+    </tr>
+
+  </table>
+
+  <h2 id="testing">Testowanie</h2>
+
+  <table>
+    <tr>
+      <th>Test</th>
+      <th>Oczekiwany efekt</th>
+    </tr>
+    <tr>
+      <td>Interakcja z NPC przy półce</td>
+      <td>Pokazuje się dialog i dwa przyciski wyboru.</td>
+    </tr>
+    <tr>
+      <td>Interakcja z kasą</td>
+      <td>Pokazuje się dialog oraz wybór słodycze / napiwek.</td>
+    </tr>
+    <tr>
+      <td>Interakcja z mężem po mandacie</td>
+      <td>Pojawiają się przyciski: powiedzieć lub ukryć mandat.</td>
+    </tr>
+    <tr>
+      <td>Wpisanie 9 w ChickenUI</td>
+      <td>Jajka zostają zdobyte, lista składników się aktualizuje.</td>
+    </tr>
+    <tr>
+      <td>Kliknięcie miski</td>
+      <td>Startuje minigra mieszania ciasta.</td>
+    </tr>
+    <tr>
+      <td>Wejście w portal</td>
+      <td>Gracz teleportuje się do LabyrinthSpawn.</td>
+    </tr>
+    <tr>
+      <td>Wejście w SugarTrigger</td>
+      <td>Pokazuje się komunikat, potem teleport do ExitSpawn.</td>
+    </tr>
+    <tr>
+      <td>Kliknięcie finałowego piekarnika</td>
+      <td>Po 5 sekundach pojawia się FinalUI z grafiką końcową.</td>
+    </tr>
+  </table>
+
+  <h2 id="uwagi">Uwagi techniczne</h2>
+
+  <ul>
+    <li>Teleport gracza przez <code>SetWorldPosition()</code> musi być wykonywany w <b>ServerContext</b>.</li>
+    <li>Elementy UI powinny znajdować się w <b>ClientContext</b>.</li>
+    <li>Elementy UI muszą mieć dokładnie takie same nazwy jak w skryptach.</li>
+    <li>Triggery interaktywne muszą mieć <code>Interactable: ON</code>, <code>Game Collision: Force On</code> i odpowiedni <code>Interaction Radius</code>.</li>
+    <li>Jeżeli dwa skrypty edytują się naraz, oznacza to, że są tą samą referencją. Należy utworzyć nowy skrypt przez <code>New Script</code>.</li>
+    <li>Do wpisywania odpowiedzi przez gracza wymagany jest obiekt <code>UITextEntry</code>.</li>
+    <li>Grafiki końcowe i ekrany przejściowe są wyświetlane przez <code>UIImage</code>.</li>
+    <li>Eventy są używane do komunikacji między triggerami i UI.</li>
+    <li>Skrypty oznaczone podwójną nazwą, np. <code>PhoneIntroScript.lua / IntroScript.lua</code>, oznaczają alternatywne nazwy używane w projekcie lub podczas testów.</li>
+  </ul>
+
+  <h2 id="summary">Podsumowanie</h2>
+
+  <p>
+    Projekt MatkoJedyna łączy elementy gry fabularnej, komediowej i zadaniowej.
+    Najważniejsze funkcjonalności zostały zrealizowane za pomocą prostych skryptów Lua,
+    systemu triggerów, interfejsów użytkownika oraz eventów. Gra zawiera ciąg zadań,
+    reakcje NPC, wybory wpływające na paski reputacji i zaufania oraz finałowe podsumowanie.
+  </p>
+
+  <p>
+    Projekt został zaprojektowany tak, aby mechaniki były proste technicznie, ale fabularnie tworzyły
+    wrażenie większej gry. Każdy etap opiera się na schemacie: interakcja, dialog, decyzja lub minigra,
+    a następnie przejście do kolejnego celu.
+  </p>
+
+  <div class="footer">
+    Generated by Doxygen style mockup for MatkoJedyna_projekt.
+  </div>
+
+</div>
+</body>
+</html>
